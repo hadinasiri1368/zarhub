@@ -2,6 +2,7 @@ package org.zarhub.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.zarhub.config.cache.CacheableEntity;
 
 import java.io.Serializable;
 
@@ -12,10 +13,10 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-//@CacheableEntity
+@CacheableEntity
 public class Person extends BaseEntity implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hibernate_sequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "IS_COMPANY", columnDefinition = "NUMBER(1)", nullable = false)
     private Boolean isCompany;

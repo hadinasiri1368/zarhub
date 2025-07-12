@@ -24,7 +24,7 @@ redis:
 springdoc:
   swagger-ui:
     persistAuthorization: true
-    server-url: http://localhost:${server.port}
+
     path: /swagger-ui/index.html
     enabled: true
     disable-swagger-default-url: true
