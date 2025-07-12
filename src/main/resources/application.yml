@@ -1,0 +1,48 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: "ZARHUB"
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://;serverName=PC-324;databaseName=zarhub;encrypt=true;trustServerCertificate=true;
+    username: sa
+    password: asd123!@#
+  jpa:
+    hibernate.ddl-auto: none
+    generate-ddl: false
+    show-sql: false
+    show-manual-log: false
+  profiles:
+    active: dev
+
+redis:
+  port: 6379
+  size: 512mb
+  host: 127.0.0.1
+
+springdoc:
+  swagger-ui:
+    persistAuthorization: true
+    server-url: http://localhost:${server.port}
+    path: /swagger-ui/index.html
+    enabled: true
+    disable-swagger-default-url: true
+
+jwt:
+  secretKey: eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTcwMDYzODUzNywiaWF0IjoxNzAwNjM4NTM3fQ.cakxNusKVbUYfXIO_ldis-uQtQMxRO58Tktr31X6O_I
+  expirationMinutes: 60
+
+verificationCode:
+  user:
+    expiration-time: 120
+    attempts-number: 3
+  customer:
+    expiration-time: 120
+    attempts-number: 3
+
+authentication:
+  paths-to-bypass: /v3/api-docs/**,/swagger-ui/**,/swagger-ui.html/**,/favicon.ico
+
+corsConfig:
+  allowedOrigin: http://localhost:${server.port}
