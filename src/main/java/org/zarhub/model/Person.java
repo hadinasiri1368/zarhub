@@ -6,7 +6,7 @@ import org.zarhub.config.cache.CacheableEntity;
 
 import java.io.Serializable;
 
-@Table(name = "AHA_PERSON")
+@Table(name = "PERSON")
 @Entity(name = "person")
 @Getter
 @Setter
@@ -18,46 +18,34 @@ public class Person extends BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "IS_COMPANY", columnDefinition = "NUMBER(1)", nullable = false)
-    private Boolean isCompany;
-    @Column(name = "FIRST_NAME", columnDefinition = "VARCHAR2(100)", nullable = false)
-    private String firstName;
-    @Column(name = "LAST_NAME", columnDefinition = "VARCHAR2(200)", nullable = false)
-    private String lastName;
-    @Column(name = "BIRTH_DATE", columnDefinition = "CHAR(10)", nullable = false)
+    @Column(columnDefinition = "NVARCHAR(50)")
+    private String name;
+    @Column(columnDefinition = "NVARCHAR(50)")
+    private String family;
+    @Column(columnDefinition = "NVARCHAR(10)", name = "birth_date")
     private String birthDate;
-    @Column(name = "NATIONAL_CODE", columnDefinition = "VARCHAR2(20)", nullable = false)
+    @Column(columnDefinition = "NVARCHAR(11)", name = "national_code")
     private String nationalCode;
-    @Column(name = "POSTAL_CODE", columnDefinition = "VARCHAR2(20)")
-    private String postalCode;
-    @Column(name = "BIRTH_CERTIFICATION_ID", columnDefinition = "VARCHAR2(30)")
-    private String birthCertificationId;
-    @Column(name = "BIRTH_CERTIFICATION_NUMBER", columnDefinition = "VARCHAR2(50)")
-    private String birthCertificationNumber;
-    @Column(name = "REGISTERATION_NUMBER", columnDefinition = "VARCHAR2(50)")
-    private String registrationNumber;
-    @Column(name = "ISSUING_CITY", columnDefinition = "VARCHAR2(100)")
-    private String issuingCity;
-    @Column(name = "FAX", columnDefinition = "VARCHAR2(100)")
-    private String fax;
-    @Column(name = "CELL_PHONE", columnDefinition = "VARCHAR2(100)")
-    private String cellPhone;
-    @Column(name = "E_MAIL", columnDefinition = "VARCHAR2(100)")
-    private String email;
-    @Column(name = "PARENT", columnDefinition = "VARCHAR2(200)")
-    private String parent;
-    @Column(name = "PHONE", columnDefinition = "VARCHAR2(200)")
-    private String phone;
-    @Column(name = "COMPANY_NAME", columnDefinition = "VARCHAR2(200)")
-    private String companyName;
-    @Column(name = "ADDRESS", columnDefinition = "VARCHAR2(1000)")
-    private String address;
-    @Column(name = "LATIN_FIRST_NAME", columnDefinition = "VARCHAR2(200)")
-    private String latinFirstName;
-    @Column(name = "LATIN_LAST_NAME", columnDefinition = "VARCHAR2(200)")
-    private String latinLastName;
-    @Column(name = "IS_IRANIAN", columnDefinition = "NUMBER(1)")
-    private Boolean isIranian;
-    @Column(name = "REF_ID", columnDefinition = "NUMBER(18)")
-    private Long refId;
+    @Column(columnDefinition = "NVARCHAR(50)", name = "mobile_number")
+    private String mobileNumber;
+    @Column(columnDefinition = "BIT", name = "is_foreigners")
+    private Boolean isForeigners;
+    @Column(columnDefinition = "BIT", name = "is_company")
+    private Boolean isCompany;
+    @Column(columnDefinition = "NVARCHAR(50)", name = "company_national_code")
+    private String companyNationalCode;
+    @Column(columnDefinition = "NVARCHAR(10)", name = "establish_date")
+    private String establishDate;
+    @Column(columnDefinition = "NVARCHAR(50)", name = "manager_name")
+    private String managerName;
+    @Column(columnDefinition = "NVARCHAR(50)", name = "manager_last_name")
+    private String managerLastName;
+    @Column(columnDefinition = "NVARCHAR(10)", name = "manager_national_code")
+    private String managerNationalCode;
+    @Column(columnDefinition = "NVARCHAR(10)", name = "manager_birth_date")
+    private String managerBirthDate;
+    @Column(columnDefinition = "NVARCHAR(50)", name = "manager_mobile_number")
+    private String managerMobileNumber;
+    @Column(columnDefinition = "NVARCHAR(50)", name = "id_number")
+    private String idNumber;
 }

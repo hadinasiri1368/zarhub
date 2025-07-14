@@ -43,7 +43,7 @@ public class OtpEmailImpl extends OtpAbstract {
     @Override
     public void generateAndSendUserOtp(String identityCode) {
         Users user = getUser(identityCode);
-        String email = user.getPerson().getEmail();
+        String email = user.getPerson().getIdNumber();//add email field
         if (Utils.isNull(email) || !Utils.isEmailValid(email))
             throw new ZarHubException(AuthenticationExceptionType.EMAIL_IS_NOT_VALID);
         OtpResponseDto otpDto = otpService.checkAndGenerateOtpCode(identityCode, OtpConsumerType.USER);

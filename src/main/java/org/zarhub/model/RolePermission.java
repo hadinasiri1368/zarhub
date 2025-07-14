@@ -7,7 +7,7 @@ import org.zarhub.model.Permission;
 import java.io.Serializable;
 
 
-@Table(name = "AHA_Role_PERMISSION")
+@Table(name = "Role_PERMISSION")
 @Entity(name = "rolePermission")
 @Getter
 @Setter

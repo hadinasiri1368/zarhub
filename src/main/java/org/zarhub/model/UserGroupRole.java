@@ -6,7 +6,7 @@ import org.zarhub.config.cache.CacheableEntity;
 
 import java.io.Serializable;
 
-@Table(name = "AHA_USER_GROUP_ROLE")
+@Table(name = "USER_GROUP_ROLE")
 @Entity(name = "userGroupRole")
 @Getter
 @Setter

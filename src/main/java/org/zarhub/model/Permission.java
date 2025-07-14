@@ -6,7 +6,7 @@ import org.zarhub.config.cache.CacheableEntity;
 
 import java.io.Serializable;
 
-@Table(name = "AHA_PERMISSION")
+@Table(name = "PERMISSION")
 @Entity(name = "permission")
 @Getter
 @Setter

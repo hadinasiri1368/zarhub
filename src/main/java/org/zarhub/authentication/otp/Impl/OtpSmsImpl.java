@@ -43,7 +43,7 @@ public class OtpSmsImpl extends OtpAbstract {
     @Override
     public void generateAndSendUserOtp(String identityCode) {
         Users user = getUser(identityCode);
-        String mobile = user.getPerson().getCellPhone();
+        String mobile = user.getPerson().getMobileNumber();
         if (Utils.isNull(mobile) || !Utils.isMobileValid(mobile))
             throw new ZarHubException(AuthenticationExceptionType.USER_MOBILE_IS_NOT_VALID);
         OtpResponseDto otpDto = otpService.checkAndGenerateOtpCode(identityCode, OtpConsumerType.USER);

@@ -1,10 +1,7 @@
 package org.zarhub.authentication;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.stereotype.Service;
 import org.zarhub.dto.DtoConvertible;
 import org.zarhub.model.Users;
@@ -15,8 +12,8 @@ import org.zarhub.validator.NotEmpty;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Service
 @Getter
+@Setter
 @Builder
 public class LoginDto implements DtoConvertible {
     @ValidateField(fieldName = "username", entityClass = Users.class)
