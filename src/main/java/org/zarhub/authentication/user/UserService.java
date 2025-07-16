@@ -1,10 +1,12 @@
 package org.zarhub.authentication.user;
 
+import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zarhub.authentication.user.dto.UserGroupDetailDto;
 import org.zarhub.authentication.user.dto.UserPermissionDto;
 import org.zarhub.authentication.user.dto.UserRoleDto;
+import org.zarhub.baseInfo.customer.constant.UserGroupType;
 import org.zarhub.common.Utils;
 import org.zarhub.dto.GenericDtoMapper;
 import org.zarhub.model.*;
@@ -24,6 +26,8 @@ public class UserService {
     }
 
     public void insert(Users users, Long userId, String uuid) throws Exception {
+        if (!Utils.isNull(users.getPerson()) && !Utils.isNull(users.getPerson().getId()))
+            repository.save(users.getPerson(), userId, uuid);
         repository.save(users, userId, uuid);
     }
 
@@ -62,6 +66,14 @@ public class UserService {
             }
             repository.batchInsert(list, userId, uuid);
         }
+    }
+
+    @Transactional
+    public void assignUserToGroup(Long newUserId, Long userGroupId, Long userId, String uuid) throws Exception {
+        Users user = repository.findOne(Users.class, newUserId);
+        UserGroup userGroup = repository.findOne(UserGroup.class, userGroupId);
+        UserGroupDetail userGroupDetail = new UserGroupDetail(null, user, userGroup);
+        repository.save(userGroupDetail, userId, uuid);
     }
 
     @Transactional

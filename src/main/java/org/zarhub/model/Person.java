@@ -1,7 +1,9 @@
 package org.zarhub.model;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.*;
 import lombok.*;
+import org.zarhub.baseInfo.customer.dto.PersonDto;
 import org.zarhub.config.cache.CacheableEntity;
 
 import java.io.Serializable;
@@ -48,4 +50,10 @@ public class Person extends BaseEntity implements Serializable {
     private String managerMobileNumber;
     @Column(columnDefinition = "NVARCHAR(50)", name = "id_number")
     private String idNumber;
+
+    public PersonDto toDto() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.convertValue(this, PersonDto.class);
+    }
+
 }

@@ -25,8 +25,8 @@ public class Users extends BaseEntity implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "F_PERSON_ID")
     private Person person;
-    @Column(name = "USERNAME", columnDefinition = "NVARCHAR2(50)", nullable = false, unique = true)
+    @Column(name = "USERNAME", columnDefinition = "NVARCHAR(50)", nullable = false, unique = true)
     private String username;
-    @Column(name = "PASSWORD", columnDefinition = "NVARCHAR2(200)", nullable = false)
+    @Column(name = "PASSWORD", columnDefinition = "NVARCHAR(200)", nullable = false)
     private String password;
 }

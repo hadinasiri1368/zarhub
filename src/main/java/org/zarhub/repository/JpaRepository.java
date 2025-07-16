@@ -167,7 +167,7 @@ public class JpaRepository {
         return entity;
     }
 
-    public <ENTITY> Page<ENTITY> findAll(Class<ENTITY> entityClass, Pageable pageable) {
+    public <ENTITY> Page<ENTITY> findByPage(Class<ENTITY> entityClass, Pageable pageable) {
         Entity entity = entityClass.getAnnotation(Entity.class);
         Query query = entityManager.createQuery("select entity from " + entity.name() + " entity");
         query.setFirstResult(pageable.getPageNumber() * pageable.getPageSize());

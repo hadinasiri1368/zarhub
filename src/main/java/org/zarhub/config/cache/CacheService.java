@@ -4,6 +4,8 @@ package org.zarhub.config.cache;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.zarhub.common.Utils;
 import org.zarhub.constant.Consts;
@@ -24,6 +26,11 @@ public class CacheService {
     @Cacheable(value = Consts.CACHE_NAME, keyGenerator = "tenantKeyGenerator")
     public <ENTITY> List<ENTITY> findAll(Class<ENTITY> entityClass) {
         return jpaRepository.findAll(entityClass);
+    }
+
+    @Cacheable(value = Consts.CACHE_NAME, keyGenerator = "tenantKeyGenerator")
+    public <ENTITY> Page<ENTITY> findByPage(Class<ENTITY> entityClass, Pageable pageable) {
+        return jpaRepository.findByPage(entityClass, pageable);
     }
 
     @CacheEvict(value = Consts.CACHE_NAME, keyGenerator = "tenantKeyGenerator")

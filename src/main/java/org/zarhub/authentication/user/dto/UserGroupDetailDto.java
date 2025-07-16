@@ -1,6 +1,8 @@
 package org.zarhub.authentication.user.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.zarhub.dto.DtoConvertible;
 import org.zarhub.repository.JpaRepository;
@@ -11,6 +13,8 @@ import java.util.List;
 
 @Setter
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserGroupDetailDto implements DtoConvertible {
 
     @NotEmpty(fieldName = "userGroupId")

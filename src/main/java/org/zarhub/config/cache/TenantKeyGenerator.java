@@ -13,7 +13,7 @@ public class TenantKeyGenerator implements KeyGenerator {
 
     @Override
     public Object generate(Object target, Method method, Object... params) {
-        String key = getKey(params);
+        String key = getKey(params) + "." + method.getName();
         return key;
     }
 

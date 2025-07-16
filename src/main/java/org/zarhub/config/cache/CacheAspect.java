@@ -3,6 +3,7 @@ package org.zarhub.config.cache;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import org.zarhub.common.Utils;
 import org.zarhub.config.request.RequestContext;
@@ -61,6 +62,8 @@ public class CacheAspect {
                                 .orElse(null);
                     } else if ("findAll".equals(methodName)) {
                         return cacheService.findAll((Class<?>) entity);
+                    } else if ("findByPage".equals(methodName)) {
+                        return cacheService.findByPage((Class<?>) entity, (Pageable) joinPoint.getArgs()[0]);
                     } else if ("batchInsert".equals(methodName)) {
                         cacheService.batchInsert((List<?>) entity, RequestContext.getUserId(), RequestContext.getUuid());
                         return null;

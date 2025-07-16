@@ -18,6 +18,6 @@ public class Role extends BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(columnDefinition = "NVARCHAR2(50)", name = "NAME", nullable = false)
+    @Column(columnDefinition = "NVARCHAR(50)", name = "NAME", nullable = false)
     private String name;
 }
